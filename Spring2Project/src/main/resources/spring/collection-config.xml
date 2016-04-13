@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+ 
+ 	<bean id="some1" class="com.toby.collection.Some">
+ 		<property name="name" value="Toby"></property>
+ 	</bean>      
+ 	<bean id="some2" class="com.toby.collection.Some">
+ 		<property name="name" value="Cainiao"></property>
+ 	</bean>      
+ 	
+ 	<bean id="CollectionBean" class="com.toby.collection.CollectionBean">
+ 	
+ 		 <!-- 字符数组 -->
+ 		<property name="strArray">
+ 			<list>
+ 				<value>welcome</value>
+ 				<value>Toby</value>
+ 			</list>
+ 		</property>
+ 		
+ 		 <!-- 对象数组 -->
+ 		<property name="objArray">
+ 			<list>
+ 				<ref bean="some1" />
+ 				<ref bean="some2" />
+ 			</list>
+ 		</property>
+ 		
+ 		<!-- List集合 -->
+ 		<property name="someList">
+ 			<list>
+ 				<value>ListTest</value>
+ 				<ref bean="some1"/>
+ 				<ref bean="some2" />
+ 			</list>
+ 		</property>
+ 		
+ 		<!-- Map类型 -->
+ 		<property name="someMap">
+ 			<map>
+ 				<entry key="MapTest">
+ 					<value>Hello!TestFromMap</value>
+ 				</entry>
+ 				<entry key="someKey1">
+					<ref bean="some1" />
+ 				</entry>
+ 				<!-- <entry key-ref="myKeyBean" value-ref="myValueBean"/> -->
+ 			</map>
+ 		</property>
+ 		
+ 		<!-- 泛型map -->
+ 		<property name="preMap">
+ 			<map>
+ 				<entry key="preMapTest1" value="12.0" />
+ 				<entry key="preMapTest2" value="122.0" />
+ 			</map>
+ 		</property>
+ 		
+ 		<!-- set集合 -->
+ 		<property name="someSet">
+ 			<set>
+ 				<value>a set element</value>
+ 				<ref bean="some1"/>
+ 			</set>
+ 		</property>
+ 		
+ 		<!-- 一般prop -->
+ 		<property name="prop">
+ 			<props>
+ 				<prop key="someProkey1">someProValue1</prop>
+ 				<prop key="someProkey2">someProValue2</prop>
+ 			</props>
+ 		</property>
+ 	</bean>  
+ 	
+ 	
+ 	   
+ </beans>

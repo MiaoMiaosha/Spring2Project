@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+    
+    <!-- Uncomment and add your base-package here:
+         <context:component-scan
+            base-package="org.springframework.samples.service"/>  -->
+            
+            <!-- 设置SaySth给helloBean继承 -->
+            <bean id="SaySth" abstract="true">
+	   		<property name="helloWorld">
+	   			<value>Hello!Toby From SaySth</value>
+	   		</property>
+	   		<!-- 设为null -->
+	   		<property name="newBean"><null/></property>
+	   		<!-- 设为"" -->
+	   	<!--  <property name="newBean2"><value></value></property> -->	
+	   </bean>
+            
+		<bean id="helloBean" class="com.toby.HelloBean"
+			  parent="SaySth">
+	   		<property name="newBean">
+	   			<value>This is a new bean from application-config</value>
+	   		</property>
+	   </bean>
+	   
+	   
+	   
+	   <!-- 打印bean实例 -->
+	   <bean id="writer" class="com.toby.FloppyWriter"></bean>
+	   
+	   <bean id="business" class="com.toby.Business"
+	   		 factory-method="createNewBusinessFac"
+	   		 init-method="initMethod"
+	   		 destroy-method="destroyMethod"
+	   		 depends-on="writer">
+	   		 <!-- depends-on要求实例化business前，先获得writer的实例 -->
+	   		 <!-- 采用多个实例 scope="prototype" 默认单例 -->
+	   		 <!-- request session globalSession 请求阶段，会话阶段与基于portlet的web应用程序会话阶段 -->
+	   		 <!-- lazy-init="true" 设置使用applicationContext时，不会一下全实例化bean-->
+	   		 
+	   		<property name="writer">
+	   			<ref bean="writer" />
+	   		</property>
+	   </bean>
+	   
+	   
+</beans>

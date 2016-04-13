@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+       
+       <bean id="configBean" class=
+       "org.springframework.beans.factory.config.CustomEditorConfigurer">
+       		<property name="customEditors">
+       			<map>
+       				<entry key="com.toby.beanFactoryPostProcessor.customEditorConfigurer.User">
+       					<bean id="userEditor" class=
+       					"com.toby.beanFactoryPostProcessor.customEditorConfigurer.UserEditor" />
+       				</entry>
+       			</map>
+       		</property>
+       </bean>
+       
+       <bean id="helloBean" class="com.toby.beanFactoryPostProcessor.customEditorConfigurer.HelloBean">
+       		<property name="helloWorld" value="hello from customEditor"></property>
+       		<property name="user" value="Toby,18010671901"></property>
+       </bean>
+</beans>

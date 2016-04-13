@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+       
+		<bean id="date" class="java.util.Date"></bean>
+		<bean id="autoBean" class="com.toby.autoWire.autoBean" 
+			  autowire="byType"
+			  dependency-check="all">
+			<property name="helloWorld" value="hello form autowire!"></property>
+			<!-- 自动装配需要指定ref -->
+			<property name="date"><ref bean="date"></ref></property>
+		</bean>
+
+</beans>

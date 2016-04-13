@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+       
+    
+       <bean id="configBean" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+       			<property name="locations">
+       				<list>
+       					<value>/com/toby/beanFactoryPostProcessor/hello.properties</value>
+       					<value>/com/toby/beanFactoryPostProcessor/second.properties</value>
+       				</list>
+       			</property>
+       </bean>
+       
+       <bean id="helloBean" class="com.toby.beanFactoryPostProcessor.HelloBean">
+       		<property name="helloWorld" value="${com.toby.beanFactoryPostProcessor.helloWorld}"></property>
+       </bean>
+       <bean id="multipleBean" class="com.toby.beanFactoryPostProcessor.MultiplePropBean">
+       		<property name="name1" value="${com.toby.beanFactoryPostProcessor.name1}"></property>
+       		<property name="name2" value="${com.toby.beanFactoryPostProcessor.name2}"></property>
+       		<property name="name3" value="${com.toby.beanFactoryPostProcessor.name3}"></property>
+       		
+       </bean>
+ </beans>
